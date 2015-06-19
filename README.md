@@ -1,62 +1,58 @@
-# Mobiles Frontend für Klarschiff
+# Mobiles Frontend für *Klarschiff*
 
-Klarschiff Mobil (KsMobil) ist eine HTML5-Anwendung, basierend auf folgenden Frameworks:
+Das mobile Frontend für *Klarschiff,* einer Onlineplattform zum Melden und Bearbeiten von Problemen und Ideen, ist eine HTML5-/JavaScript-Anwendung, basierend auf folgenden Frameworks und Bibliotheken:
 
-* [The-M-Project](http://www.the-m-project.org) - jQuery basiertes MVC-Framework
-  für HTML5-Anwendungen
-* [Openlayers](http://openlayers.org) - JavaScript-Mapping-Framework
-* [PROJ4JS](https://github.com/proj4js/proj4js) - JavaScript Bibliothek zur 
-  Transfomation von Koordinaten
+* [**The-M-Project**](http://www.the-m-project.org): auf [jQuery](https://jquery.com) basierendes MVC-Framework für HTML5-/JavaScript-Anwendungen
+* [**OpenLayers**](http://openlayers.org): JavaScript-Mapping-Framework
+* [**Proj4js**](https://github.com/proj4js/proj4js): JavaScript-Bibliothek zur Transfomation von Koordinaten
 
-Die Applikation wird mit dem Werkzeug [Espresso](https://github.com/mwaylabs/Espresso)
-erzeugt.
+Die Anwendung wird mit dem Werkzeug [**Espresso**](https://github.com/mwaylabs/Espresso) erzeugt.
 
 ## Verzeichnisstruktur
 
-* **KsMobil:** Applikationsquellen
-* **node\_modules/espresso:** via npm installiertes Paket von Espresso zur 
-  Bereitstellung der Build-Umgebung sowie der notwendigen Ressourcen für 
-  The-M-Project. Da die Integration als Git Submodul leider nicht mit alles
-  enthaltenen Referenzen funktioniert.
-* **OpenLayers:** Git Submodul zur Bereitstellung der Build-Umgebung für eine 
-  angepasste Openlayers.js
-* **proj4js:** Git Submodul für die aktuellen Quellen.
-* **ksmobil.openlayers.build.cfg:** Konfigurationsdatei für ein individuelles 
-  OpenLayers-Build
-* **package.json:** Konfigurationsdatei für Espressoinstallation via npm.
+* **/KsMobil:** Anwendungsquellen
+* **/node\_modules/espresso:** via [**npm**](https://www.npmjs.com) installiertes Paket von [Espresso](https://github.com/mwaylabs/Espresso) zur Bereitstellung der Build-Umgebung sowie der notwendigen Ressourcen für [The-M-Project](http://www.the-m-project.org) (da die Integration als Git-Submodul leider nicht mit allen enthaltenen Referenzen funktioniert)
+* **/OpenLayers:** Git-Submodul zur Bereitstellung der Build-Umgebung für eine angepasste OpenLayers.js
+* **/proj4js:** Git-Submodul für die aktuellen [Proj4js](https://github.com/proj4js/proj4js)-Quellen
+* **/ksmobil.openlayers.build.cfg:** Konfigurationsdatei für ein individuelles [OpenLayers](http://openlayers.org)-Build
+* **package.json:** Konfigurationsdatei für die Installation von [Espresso](https://github.com/mwaylabs/Espresso) via [npm](https://www.npmjs.com)
 
 ## Einrichtung der Build- und Entwicklungsumgebung
 
 ### Voraussetzungen
 
-Zur Installation und Anwendung der Build-Umgebung wird [Node.js](http://nodejs.org/) >= 0.10
-und [NPM](http://npmjs.org/) benötigt. Letzteres wird durch die Installation von Node.js 
-mit bereitgestellt.
+Zur Installation und Anwendung der Build- und Entwicklungsumgebung werden [**Node.js**](http://nodejs.org) >= 0.10 und [npm](https://www.npmjs.com) benötigt. Letzteres wird in der Regel durch die Installation von [Node.js](http://nodejs.org) mit bereitgestellt.
 
-1. Initialisierung der Git Submodule (Aufruf aus der Repository-Wurzel):
+### Installation der Build- und Entwicklungsumgebung
+
+1.  Anwendung aus dem Git-Repository klonen:
+
+        git clone https://github.com/rostock/klarschiff-mobil /Pfad/zur/Anwendung
+        
+1.  in das Anwendungsverzeichnis wechseln und Git-Submodule herunterladen sowie installieren:
 
         git submodule update --init --recursive
 
-1. Installation Espresso via npm:
+1.  gegebenenfalls Proxy für [npm](https://www.npmjs.com) setzen:
+    
+        npm config set proxy http://meine-proxy-domain:mein-proxy-port
+        npm config set https-proxy http://meine-proxy-domain:mein-proxy-port
 
-        cd frontend-mobil
+1.  [Espresso](https://github.com/mwaylabs/Espresso) via [npm](https://www.npmjs.com) installieren:
+
         npm install
 
-1. Erzeugen eines Alias zum vereinfachten Aufruf von Espresso:
+1.  Alias zum vereinfachten Aufruf von [Espresso](https://github.com/mwaylabs/Espresso) installieren:
 
         alias espresso=`pwd`/node_modules/espresso/bin/espresso.js
 
 ## Build erzeugen
 
-Um ein neues Build aus dem aktuellen Programmcode zu erzeugen, wird im
-Verzeichnis KsMobil das Espresso-Build-Tool benutzt:
+Um ein neues Build aus den aktuellen Anwendungsquellen zu erzeugen, wird im Verzeichnis @Anwendungsverzeichnis/KsMobil@ das [Espresso](https://github.com/mwaylabs/Espresso)-Build-Tool benutzt:
 
-    cd KsMobil
     espresso build
 
-Das fertige Build wird dann im Verzeichnis KsMobil/build/{version} abgelegt. Beim 
-Deployment auf den Webserver ist darauf zu achten, dass Proxies entsprechend
-der Proxy-Konfiguration in der Datei KsMobil/config.json angelegt werden!
+Das fertige Build wird dann im Verzeichnis @Anwendungsverzeichnis/KsMobil/build/{version}@ abgelegt. Beim Deployment auf einem Webserver ist darauf zu achten, dass Proxies entsprechend der Proxy-Konfiguration in der Datei @Anwendungsverzeichnis/KsMobil/config.json@ angelegt werden!
 
 ## Integration einer neuen Version von The-M-Project
 
