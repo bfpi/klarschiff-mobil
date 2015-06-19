@@ -27,7 +27,7 @@ Zur Installation und Anwendung der Build- und Entwicklungsumgebung werden [**Nod
 
 1.  Anwendung aus dem Git-Repository klonen:
 
-        git clone https://github.com/rostock/klarschiff-mobil /Pfad/zur/Anwendung
+        git clone https://github.com/rostock/klarschiff-mobil /Pfad/zum/Anwendungsverzeichnis
         
 1.  in das Anwendungsverzeichnis wechseln und Git-Submodule herunterladen sowie installieren:
 
@@ -48,44 +48,35 @@ Zur Installation und Anwendung der Build- und Entwicklungsumgebung werden [**Nod
 
 ## Build erzeugen
 
-Um ein neues Build aus den aktuellen Anwendungsquellen zu erzeugen, wird im Verzeichnis @Anwendungsverzeichnis/KsMobil@ das [Espresso](https://github.com/mwaylabs/Espresso)-Build-Tool benutzt:
+Um ein neues Build aus den aktuellen Anwendungsquellen zu erzeugen, wird im Verzeichnis `Anwendungsverzeichnis/KsMobil` das [Espresso](https://github.com/mwaylabs/Espresso)-Build-Tool benutzt:
 
     espresso build
 
-Das fertige Build wird dann im Verzeichnis @Anwendungsverzeichnis/KsMobil/build/{version}@ abgelegt. Beim Deployment auf einem Webserver ist darauf zu achten, dass Proxies entsprechend der Proxy-Konfiguration in der Datei @Anwendungsverzeichnis/KsMobil/config.json@ angelegt werden!
+Das fertige Build wird dann im Verzeichnis `Anwendungsverzeichnis/KsMobil/build/{version}` abgelegt. Beim Deployment auf einem Webserver ist darauf zu achten, dass Proxies entsprechend der Proxy-Konfiguration in der Datei `Anwendungsverzeichnis/KsMobil/config.json` angelegt werden!
 
-## Integration einer neuen Version von The-M-Project
+## Integration neuer Versionen der Frameworks und Bibliotheken
 
-Leider gibt es zur Zeit noch keinen Weg via Werkzeug oder Espresso das Framework zu
-aktualisieren. Wenn also eine neue Version des Framworks integriert werden soll, 
-muss hierzu wie folgt vorgegangen werden:
+### The-M-Project
 
-1. Installation der neueren Version von Espresso im Wurzelverzeichnis (die vorhandene
-   Version wird dabei überschrieben):
+Leider gibt es zur Zeit noch keinen Weg via Werkzeug oder [Espresso](https://github.com/mwaylabs/Espresso) das Framework zu aktualisieren. Wenn also eine neue Version des Framworks integriert werden soll, muss hierzu wie folgt vorgegangen werden:
+
+1.  in das Anwendungsverzeichnis wechseln und neuere Version von [Espresso](https://github.com/mwaylabs/Espresso) im Wurzelverzeichnis installieren (die vorhandene Version wird dabei überschrieben):
 
         npm install espresso@x.y.z
 
-1. Austausch des aktuellen Framwork-Verzeichnis im Projekt durch das aus der 
-   neuen Espresso-Version:
+1.  aktuelles Framwork-Verzeichnis im Projekt durch jenes aus der neuen [Espresso](https://github.com/mwaylabs/Espresso)-Version ersetzen:
 
-        rm -rf frontend-mobil/KsMobil/frameworks/The-M-Project
-        cp -R node_modules/espresso/frameworks/The-M-Project frontend-mobil/KsMobil/frameworks/
+        rm -rf Anwendungsverzeichnis/KsMobil/frameworks/The-M-Project
+        cp -R Anwendungsverzeichnis/node_modules/espresso/frameworks/The-M-Project Anwendungsverzeichnis/KsMobil/frameworks/
 
-## Integration einer neuen Version von OpenLayers
+### OpenLayers
 
-Wenn eine neue Version von OpenLayers verwendet werden soll, muss hierzu das 
-zugehörige Git Submodul aktualisiert werden. Anschließend kann dann eine neue 
-Bibliotheksversion für KsMobil erzeugt werden. In der Datei 
-`ksmobil.openlayers.build.cfg` ist hierfür eine OpenLayers-Build-Konfiguration
-abgelegt, mit der ein angepasstes OpenLayers erstellt werden kann. Dazu muss das 
-Build-Skript unter `OpenLayers/build/build.py` mit dieser Konfiguration ausgeführt
-werden. Die Ausgabe sollte in das zugehörige frameworks-Verzeichnis erfolgen. 
-Der Aufruf muss allerdings zwingend aus dem `OpenLayers/build`-Ordner erfolgen.
+Wenn eine neue Version von [OpenLayers](http://openlayers.org) verwendet werden soll, muss hierzu das zugehörige Git-Submodul aktualisiert werden. Anschließend kann dann eine neue Bibliotheksversion für `Anwendungsverzeichnis/KsMobil` erzeugt werden. In der Datei `ksmobil.openlayers.build.cfg` ist hierfür eine [OpenLayers](http://openlayers.org)-Build-Konfiguration abgelegt, mit der ein angepasstes [OpenLayers](http://openlayers.org) erstellt werden kann. Dazu muss das Build-Skript unter `Anwendungsverzeichnis/OpenLayers/build/build.py` mit dieser Konfiguration ausgeführt werden. Die Ausgabe sollte in das zugehörige Framework-Verzeichnis erfolgen.  Der Aufruf muss allerdings zwingend aus dem Verzeichnis`Anwendungsverzeichnis/OpenLayers/build` erfolgen:
 
-    cd OpenLayers/build/
+    cd Anwendungsverzeichnis/OpenLayers/build
     build.py ../../ksmobil.openlayers.build.cfg ../../KsMobil/frameworks/OpenLayers/OpenLayers.js
 
-## Integration einer neuen Version von PROJ4JS
+### Proj4js
 
 Zur Zeit gestalltet sich die Integration einer neueren Version als sehr schwierig,
 da OpenLayers aktuell nur die Version bis 1.1.0 zu unterstützen scheint.
