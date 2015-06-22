@@ -38,7 +38,7 @@ KsMobil.URLS = {
 };
 
 KsMobil.WFSOptions = {
-    meldungWFSFeatureType:    'hro-demo.klarschiff.meldungen'
+    meldungWFSFeatureType:    'hro-support.klarschiff.meldungen'
 };
 
 /**
