@@ -41,9 +41,6 @@
     },{
         "name": "OpenLayers",
         "refs": ["OpenLayers.js"]
-    },{
-        "name": "impressum",
-        "refs": ["impressum.html"]
     }],
 
     "htmlHeader": [
