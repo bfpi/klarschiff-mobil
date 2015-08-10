@@ -166,8 +166,8 @@ KsMobil.MapController = M.Controller.extend({
                     ],
                     styleMap: this.styles.meldungen
                 }),
-                poi: new OpenLayers.Layer.WMS('POI', 'http://geo.sv.rostock.de/geodienste/klarschiff_poi/ows', {
-                        layers: 'abfallbehaelter,ampeln,beleuchtung,brunnen,denkmale,hundetoiletten,recyclingcontainer,sitzgelegenheiten,sperrmuelltermine',
+                poi: new OpenLayers.Layer.WMS('Klarschiff-POI', 'http://geo.sv.rostock.de/geodienste/klarschiff-poi/wms', {
+                        layers: 'hro.klarschiff-poi.abfallbehaelter,hro.klarschiff-poi.ampeln,hro.klarschiff-poi.beleuchtung,hro.klarschiff-poi.brunnen,hro.klarschiff-poi.denkmale,hro.klarschiff-poi.hundetoiletten,hro.klarschiff-poi.recyclingcontainer,hro.klarschiff-poi.sitzgelegenheiten,hro.klarschiff-poi.sperrmuelltermine',
                         format: 'image/png',
                         transparent: true,
                     },
