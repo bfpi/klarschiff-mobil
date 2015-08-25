@@ -26,7 +26,7 @@ KsMobil.MissbrauchPage = M.PageView.design({
     }),
 
     content: M.ScrollView.design({
-        childViews: 'email details hinweis actions',
+        childViews: 'email begruendung hinweis actions',
 
         email: M.TextFieldView.design({
             inputType: M.INPUT_EMAIL,
@@ -35,7 +35,7 @@ KsMobil.MissbrauchPage = M.PageView.design({
             cssClassOnInit: 'initial-text'
         }),
 
-        details: M.TextFieldView.design({
+        begruendung: M.TextFieldView.design({
             label: 'Begründung',
             hasMultipleLines: true,
             initialText: 'Bitte geben Sie eine Begründung an.',
@@ -43,7 +43,7 @@ KsMobil.MissbrauchPage = M.PageView.design({
         }),
         
         hinweis: M.LabelView.design({
-            value: '<b>Hinweis:</b> Einen Missbrauch können und sollten Sie dann melden, wenn durch Betreff, Details oder Foto Persönlichkeitsrechte verletzt werden (z. B. wenn auf dem Foto Gesichter oder Kfz-Kennzeichen zu erkennen sind). <span style="font-style:italic;color:#d81920">Achtung: Wenn Sie einen Missbrauch melden, wird die betroffene Meldung <b>sofort</b> und so lange <b>deaktiviert</b> (und damit unsichtbar), bis wir Ihren Missbrauchshinweis bearbeitet haben.</span>',
+            value: '<b>Hinweis:</b> Einen Missbrauch können und sollten Sie dann melden, wenn durch Beschreibung oder Foto Persönlichkeitsrechte verletzt werden (z. B. wenn auf dem Foto Gesichter oder Kfz-Kennzeichen zu erkennen sind). <span style="font-style:italic;color:#d81920">Achtung: Wenn Sie einen Missbrauch melden, wird die betroffene Meldung <b>sofort</b> und so lange <b>deaktiviert</b> (und damit unsichtbar), bis wir Ihren Missbrauchshinweis bearbeitet haben.</span>',
             cssClass: "hinweis"
         }),
 

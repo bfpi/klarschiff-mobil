@@ -1,6 +1,6 @@
 KsMobil.MeldenView = M.ScrollView.design({
 
-    childViews: 'hauptkategorie unterkategorie email betreff details'
+    childViews: 'hauptkategorie unterkategorie email beschreibung'
         + ' foto hinweis aufforderung actions',
 
     /**
@@ -51,16 +51,11 @@ KsMobil.MeldenView = M.ScrollView.design({
 
     /**
      * Optionale Angaben
-     *  Betreff
-     *  Details
+     *  Beschreibung
      *  Foto
      */
-    betreff: M.TextFieldView.design({
-        label:'Betreff'
-    }),
-
-    details: M.TextFieldView.design({
-        label: 'Details',
+    beschreibung: M.TextFieldView.design({
+        label: 'Beschreibung',
         hasMultipleLines: true
     }),
 
