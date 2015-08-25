@@ -285,20 +285,11 @@ KsMobil.MeldungController = M.Controller.extend({
         this.updateUnterkategorien();
         form.unterkategorie.themeUpdate();
 
-        $('#' + form.betreff.id).val("").attr("placeholder", "");
-        $('#' + form.betreff.id).focus(function() {
+        $('#' + form.beschreibung.id).val("").attr("placeholder", "");
+        $('#' + form.beschreibung.id).focus(function() {
             $(this).removeClass('initial-text');
         });
-        $('#' + form.betreff.id).blur(function() {
-            if ($(this).val() == "") {
-                $(this).addClass('initial-text');
-            }
-        });
-        $('#' + form.details.id).val("").attr("placeholder", "");
-        $('#' + form.details.id).focus(function() {
-            $(this).removeClass('initial-text');
-        });
-        $('#' + form.details.id).blur(function() {
+        $('#' + form.beschreibung.id).blur(function() {
             if ($(this).val() == "") {
                 $(this).addClass('initial-text');
             }
@@ -306,10 +297,8 @@ KsMobil.MeldungController = M.Controller.extend({
         $('input[name="foto"]').val("");
 
         // reset 'required'  status
-        form.betreff.label = form.betreff.label.replace(/\**$/, "");
-        form.details.label = form.details.label.replace(/\**$/, "");
-        $('label[for="' +form.betreff.id +'"]').text(form.betreff.label);
-        $('label[for="' +form.details.id +'"]').text(form.details.label);
+        form.beschreibung.label = form.beschreibung.label.replace(/\**$/, "");
+        $('label[for="' +form.beschreibung.id +'"]').text(form.beschreibung.label);
     },
 
     /**
@@ -324,8 +313,7 @@ KsMobil.MeldungController = M.Controller.extend({
             unterkategorie: form.unterkategorie.getSelection(),
             point: this.feature.geometry.toShortString(),
             email: form.email.value,
-            betreff: form.betreff.value,
-            details: form.details.value
+            beschreibung: form.beschreibung.value
         };
 
         if (typeof data.hauptkategorie === 'undefined') {
@@ -348,43 +336,12 @@ KsMobil.MeldungController = M.Controller.extend({
         if (!kategorie) {
             return false;
         }
-        switch (kategorie.naehere_beschreibung_notwendig) {
-            case "betreffUndDetails":
-                if (!data.betreff && data.betreff !== "0") {
-                    M.DialogView.alert({
-                        title: 'Fehler',
-                        message: 'Sie müssen einen Betreff angeben.'
-                    });
-                    return false;
-                }
-                if (!data.details && data.details !== "0" ) {
-                    M.DialogView.alert({
-                        title: 'Fehler',
-                        message: 'Sie müssen Ihre Meldung genauer beschreiben.'
-                    });
-                    return false;
-                }
-                break;
-
-            case "betreff":
-                if (!data.betreff && data.betreff !== "0") {
-                    M.DialogView.alert({
-                        title: 'Fehler',
-                        message: 'Sie müssen einen Betreff angeben.'
-                    });
-                    return false;
-                }
-                break;
-
-            case "details":
-                if (!data.details && data.details !== "0" ) {
-                    M.DialogView.alert({
-                        title: 'Fehler',
-                        message: 'Sie müssen Ihre Meldung genauer beschreiben.'
-                    });
-                    return false;
-                }
-                break;
+        if (!data.beschreibung && data.beschreibung !== "0" ) {
+            M.DialogView.alert({
+                title: 'Fehler',
+                message: 'Sie müssen Ihre Meldung genauer beschreiben.'
+            });
+            return false;
         }
 
         if (!M.EmailValidator.pattern.exec(data.email)) {
@@ -519,14 +476,14 @@ KsMobil.MeldungController = M.Controller.extend({
         var data = {
             id: this.feature.attributes.id,
             email: M.ViewManager.getView('missbrauchPage', 'email').value,
-            details: M.ViewManager.getView('missbrauchPage', 'details').value
+            begruendung: M.ViewManager.getView('missbrauchPage', 'begruendung').value
         };
 
         if (!M.EmailValidator.pattern.exec(data.email)) {
             errors.push('<p>Sie müssen Ihre E-Mail-Adresse angeben.');
         }
 
-        if (!data.details) {
+        if (!data.begruendung) {
             errors.push('<p>Sie müssen eine Begründung angeben.')
         }
 
@@ -754,16 +711,12 @@ KsMobil.MeldungController = M.Controller.extend({
         var view =  M.ViewManager.getView('meldenPage', 'content');
         select = M.ViewManager.getView('meldenPage', 'content').unterkategorie;
 
-        var $betreff = $("#"+ view.betreff.id);
-        var $details = $("#"+ view.details.id);
+        var $beschreibung = $("#"+ view.beschreibung.id);
 
-        $betreff.attr("placeholder", "");
-        $details.attr("placeholder", "");
+        $beschreibung.attr("placeholder", "");
         $(".aufforderung").css("visibility", "hidden");
-        view.betreff.label = view.betreff.label.replace(/\**$/, "");
-        view.details.label = view.details.label.replace(/\**$/, "");
-        $('label[for="' +view.betreff.id +'"]').text(view.betreff.label);
-        $('label[for="' +view.details.id +'"]').text(view.details.label);
+        view.beschreibung.label = view.beschreibung.label.replace(/\**$/, "");
+        $('label[for="' +view.beschreibung.id +'"]').text(view.beschreibung.label);
 
         var kategorieId = select.getSelection();
         var kategorieId = $("#" + select.id).val();
@@ -772,40 +725,12 @@ KsMobil.MeldungController = M.Controller.extend({
             return;
         }
 
-        switch(kategorie.naehere_beschreibung_notwendig) {
+        $beschreibung.attr("placeholder", "Bitte beschreiben Sie Ihre Meldung genauer.");
+        $beschreibung.addClass('initial-text');
+        view.beschreibung.label = view.beschreibung.label + "*";
+        $('label[for="' +view.beschreibung.id +'"]').text(view.beschreibung.label);
 
-            case "betreff":
-                $betreff.attr("placeholder", "Bitte geben Sie einen Betreff an.");
-                $betreff.addClass('initial-text');
-                view.betreff.label = view.betreff.label + "*";
-                $('label[for="' +view.betreff.id +'"]').text(view.betreff.label);
-
-                $(".aufforderung").css("visibility", "visible");
-
-                break;
-            case "details":
-                $details.attr("placeholder", "Bitte beschreiben Sie Ihre Meldung genauer.");
-                $details.addClass('initial-text');
-                view.details.label = view.details.label + "*";
-                $('label[for="' +view.details.id +'"]').text(view.details.label);
-
-                $(".aufforderung").css("visibility", "visible");
-
-                break;
-            case "betreffUndDetails":
-                $betreff.attr("placeholder", "Bitte geben Sie einen Betreff an.");
-                $betreff.addClass('initial-text');
-                $details.attr("placeholder", "Bitte beschreiben Sie Ihre Meldung genauer.");
-                $details.addClass('initial-text');
-                view.betreff.label = view.betreff.label + "*";
-                $('label[for="' +view.betreff.id +'"]').text(view.betreff.label);
-
-                view.details.label = view.details.label + "*";
-                $('label[for="' +view.details.id +'"]').text(view.details.label);
-
-                $(".aufforderung").css("visibility", "visible");
-                break;
-        }
+        $(".aufforderung").css("visibility", "visible");
     }
 });
 
