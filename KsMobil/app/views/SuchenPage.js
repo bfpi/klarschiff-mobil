@@ -38,7 +38,7 @@ KsMobil.SuchenPage = M.PageView.design({
 
         searchbar: M.SearchBarView.design({
             label: 'Sucheingabefeld',
-            initialText: 'Stadtteil/Straße/Adresse…',
+            initialText: 'Ortsteil/Straße/Adresse…',
             cssClassOnInit: 'initial-text'
         }),
 
