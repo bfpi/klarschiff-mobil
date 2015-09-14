@@ -7,5 +7,9 @@ if [ $# -ne 0 ]
 then
   sed -i 's/<html manifest="cache.manifest">/<html>/' build/$out/index.html
   ln -snf $out build/current
+  echo "Build version $out to build/current"
+else
+  tar czf build/$out.tar.gz -C build/$out/ .
+  echo "Build version $out to build/$out.tar.gz"
 fi
 cd -
