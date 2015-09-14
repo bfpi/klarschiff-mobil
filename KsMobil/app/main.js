@@ -19,26 +19,27 @@ if(baseUrl == null || baseUrl == '') {
 if(baseUrl.match(/[^/]$/)) baseUrl = baseUrl + '/';
 
 KsMobil.URLS = {
-    versions:                 baseUrl + 'frontend/getVersions.php',
-    configuration:            baseUrl + 'frontend/getConfig.php',
+    versions:                 baseUrl + 'pc/frontend/getVersions.php',
+    configuration:            baseUrl + 'pc/frontend/getConfig.php',
     onlineCheck:              baseUrl,
+    impressum:                baseUrl + 'pc/impressum.php',
 
-    icons:                    baseUrl + 'images/icons/',
-    meldungWFS:               baseUrl + 'geodienste/klarschiff/wfs',
-    meldungWFSFeatureNS:      baseUrl + 'geodienste/klarschiff',
+    icons:                    baseUrl + 'pc/images/icons/',
+    meldungWFS:               baseUrl + 'ows/klarschiff/wfs',
+    meldungWFSFeatureNS:      baseUrl + 'ows/klarschiff',
 
-    pointCheck:               baseUrl + 'php/point_check.php',
-    meldungSubmit:            baseUrl + 'php/meldung_submit.php',
-    meldungSupport:           baseUrl + 'php/meldung_support.php',
-    meldungAbuse:             baseUrl + 'php/meldung_abuse.php',
-    meldungLobHinweiseKritik: baseUrl + 'php/meldung_lobhinweisekritik.php',
+    pointCheck:               baseUrl + 'pc/php/point_check.php',
+    meldungSubmit:            baseUrl + 'pc/php/meldung_submit.php',
+    meldungSupport:           baseUrl + 'pc/php/meldung_support.php',
+    meldungAbuse:             baseUrl + 'pc/php/meldung_abuse.php',
+    meldungLobHinweiseKritik: baseUrl + 'pc/php/meldung_lobhinweisekritik.php',
     meldungImage:             baseUrl + 'fotos/',
 
-    search:                   baseUrl + 'search/server.php'
+    search:                   baseUrl + 'pc/search/server.php'
 };
 
 KsMobil.WFSOptions = {
-    meldungWFSFeatureType:    'hro-demo.klarschiff.meldungen'
+    meldungWFSFeatureType:    'vorgaenge'
 };
 
 /**

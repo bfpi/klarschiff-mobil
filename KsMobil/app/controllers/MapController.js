@@ -166,22 +166,22 @@ KsMobil.MapController = M.Controller.extend({
                     ],
                     styleMap: this.styles.meldungen
                 }),
-                poi: new OpenLayers.Layer.WMS('Klarschiff-POI', 'http://geo.sv.rostock.de/geodienste/klarschiff-poi/wms', {
-                        layers: 'hro.klarschiff-poi.abfallbehaelter,hro.klarschiff-poi.ampeln,hro.klarschiff-poi.beleuchtung,hro.klarschiff-poi.brunnen,hro.klarschiff-poi.denkmale,hro.klarschiff-poi.hundetoiletten,hro.klarschiff-poi.recyclingcontainer,hro.klarschiff-poi.sitzgelegenheiten,hro.klarschiff-poi.sperrmuelltermine',
-                        format: 'image/png',
-                        transparent: true,
-                    },
-                    {
-                        transitionEffect: 'resize',
-                        displayInLayerSwitcher: false,
-                        isBaseLayer: false,
-                        minScale: 1100,
-                        singleTile: true
-                    }
-                ),
-                stadtplan: new OpenLayers.Layer.TMS('Stadtplan', 'http://geo.sv.rostock.de/geodienste/stadtplan/tms/', {
-                    layername: 'stadtplan_EPSG25833',
-                    type: 'png',
+//                poi: new OpenLayers.Layer.WMS('Klarschiff-POI', 'http://geo.sv.rostock.de/geodienste/klarschiff-poi/wms', {
+//                        layers: 'hro.klarschiff-poi.abfallbehaelter,hro.klarschiff-poi.ampeln,hro.klarschiff-poi.beleuchtung,hro.klarschiff-poi.brunnen,hro.klarschiff-poi.denkmale,hro.klarschiff-poi.hundetoiletten,hro.klarschiff-poi.recyclingcontainer,hro.klarschiff-poi.sitzgelegenheiten,hro.klarschiff-poi.sperrmuelltermine',
+//                        format: 'image/png',
+//                        transparent: true,
+//                    },
+//                    {
+//                        transitionEffect: 'resize',
+//                        displayInLayerSwitcher: false,
+//                        isBaseLayer: false,
+//                        minScale: 1100,
+//                        singleTile: true
+//                    }
+//                ),
+                stadtplan: new OpenLayers.Layer.WMS('Stadtplan', 'http://geo.sv.rostock.de/geodienste/stadtplan/ows/', {
+                    layers: 'stadtplan',
+                    type: 'image/png',
                     transitionEffect: 'resize',
                     tileSize: new OpenLayers.Size(256, 256),
                     serverResolutions: [529.166666667,
@@ -191,9 +191,9 @@ KsMobil.MapController = M.Controller.extend({
                         5.2916666667, 3.5277777778, 2.6458333333, 1.7638888889,
                         0.8819444444, 0.3527777778, 0.1763888889]
                 }),
-                luftbild: new OpenLayers.Layer.TMS('Luftbild', 'http://geo.sv.rostock.de/geodienste/luftbild/tms/', {
-                    layername: 'luftbild_EPSG25833',
-                    type: 'png',
+                luftbild: new OpenLayers.Layer.WMS('Luftbild', 'http://geo.sv.rostock.de/geodienste/luftbild/ows/', {
+                    layers: 'luftbild',
+                    type: 'image/png',
                     transitionEffect: 'resize',
                     tileSize: new OpenLayers.Size(256, 256),
                     serverResolutions: [529.166666667,
@@ -205,7 +205,7 @@ KsMobil.MapController = M.Controller.extend({
                 })
             };
 
-            this.layers.stadtplan.attribution = 'Kartenbild © Hansestadt Rostock (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
+            this.layers.stadtplan.attribution = 'Kartenbild © Universitäts- und Hansestadt Greifswald (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
             this.layers.luftbild.attribution = '© GeoBasis-DE/M-V';
 
             this.controls = {
@@ -247,8 +247,8 @@ KsMobil.MapController = M.Controller.extend({
                     0.8819444444, 0.3527777778, 0.1763888889],
                     units: 'm',
                     numZoomLevels: 12,
-                    maxExtent: new OpenLayers.Bounds(200000, 5880000, 480000, 6075000),
-                    restrictedExtent: new OpenLayers.Bounds(302094.673, 5991073.68, 325566.696, 6016342.598)
+                    maxExtent: new OpenLayers.Bounds(190500, 5690700, 601200, 6098600),
+                    restrictedExtent: new OpenLayers.Bounds(389869, 5990667, 401158, 5998481)
             },
             this.layers,
             {

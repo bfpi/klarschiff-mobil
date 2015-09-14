@@ -32,7 +32,7 @@ KsMobil.MeldungPage = M.PageView.design({
           if(!feature) {
             return 'Titel';
           }
-          return '<img id="meldung_details_icon" src="../images/icons/' +
+          return '<img id="meldung_details_icon" src="' + KsMobil.URLS.icons +
             feature.attributes.vorgangstyp +'_'+ feature.attributes.status +'_layer.png"></img>' +
             (feature.attributes.vorgangstyp == 'idee' ? 'Idee' : 'Problem') + 
             ' (#' + feature.attributes.id + ' – ' + feature.attributes.datum_erstellt + ')';

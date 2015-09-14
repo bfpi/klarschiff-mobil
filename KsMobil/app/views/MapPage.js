@@ -49,7 +49,8 @@ KsMobil.MapPage = M.PageView.design({
 
             normalButtons: M.ButtonGroupView.design({
                 anchorLocation: M.CENTER,
-                childViews: 'location search layer problem idee',
+//                childViews: 'location search layer problem idee',
+                childViews: 'location search layer problem',
                 cssClass: 'map-buttons',
                 
                 location: M.ButtonView.design({
@@ -108,20 +109,20 @@ KsMobil.MapPage = M.PageView.design({
                             action: 'problemMelden'
                         }
                     }
-                }),
-
-                idee: M.ButtonView.design({
-                    value: 'Idee melden',
-                    icon: 'idee',
-                    isInline: true,
-                    isIconOnly: true,
-                    events: {
-                        'tap': {
-                            target: KsMobil.MeldungController,
-                            action: 'ideeMelden'
-                        }
-                    }
-                })
+                })//,
+//
+//                idee: M.ButtonView.design({
+//                    value: 'Idee melden',
+//                    icon: 'idee',
+//                    isInline: true,
+//                    isIconOnly: true,
+//                    events: {
+//                        'tap': {
+//                            target: KsMobil.MeldungController,
+//                            action: 'ideeMelden'
+//                        }
+//                    }
+//                })
             }),
 
             meldungButtons: M.ButtonGroupView.design({
