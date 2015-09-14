@@ -9,7 +9,7 @@ then
   ln -snf $out build/current
   echo "Build version $out to build/current"
 else
-  tar czf build/$out.tar.gz -C build/$out/ .
-  echo "Build version $out to build/$out.tar.gz"
+  tar czf build/KsMobil-v$out.tar.gz -C build/$out/ .
+  echo "Build version $out to build/KsMobil-v$out.tar.gz"
 fi
 cd -
