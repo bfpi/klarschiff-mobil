@@ -22,6 +22,7 @@ KsMobil.URLS = {
     versions:                 baseUrl + 'frontend/getVersions.php',
     configuration:            baseUrl + 'frontend/getConfig.php',
     onlineCheck:              baseUrl,
+    impressum:                baseUrl + 'impressum.php',
 
     icons:                    baseUrl + 'images/icons/',
     meldungWFS:               baseUrl + 'geodienste/klarschiff/wfs',

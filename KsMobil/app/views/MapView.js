@@ -10,7 +10,7 @@ KsMobil.OpenlayersMapView = M.View.extend({
     
     render: function() {
         this.html += '<div id="' + this.id + '" class="ol-map-container">';
-        this.html += '<div id="' + this.id + '_map" class="ol-map"></div><a id="impressum" href="/impressum.php" target="_blank">Impressum</a><div id="navigation" data-role="controlgroup" data-type="vertical"><a href="#" data-role="button" data-theme="a" data-inline="true" data-icon="zoom-in" id="plus" data-iconpos="notext">in Karte hineinzoomen</a><a href="#" data-role="button" data-theme="a" data-inline="true" data-icon="zoom-out" id="minus" data-iconpos="notext">aus Karte herauszoomen</a></div></div>';
+        this.html += '<div id="' + this.id + '_map" class="ol-map"></div><a id="impressum" href="' + KsMobil.URLS.impressum + '" target="_blank">Impressum</a><div id="navigation" data-role="controlgroup" data-type="vertical"><a href="#" data-role="button" data-theme="a" data-inline="true" data-icon="zoom-in" id="plus" data-iconpos="notext">in Karte hineinzoomen</a><a href="#" data-role="button" data-theme="a" data-inline="true" data-icon="zoom-out" id="minus" data-iconpos="notext">aus Karte herauszoomen</a></div></div>';
         return this.html;
     },
 
