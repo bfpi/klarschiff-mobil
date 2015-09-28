@@ -111,7 +111,7 @@ KsMobil.MeldungController = M.Controller.extend({
         if (event.feature.cluster) {
             this.enhancePageForCluster(event.feature.cluster, currentIndex);
         }
-        this.switchToPage(this.meldungPage);
+        this.switchToPage(this.meldungPage, 'slidedown', true, false);
     },
 
     recorderButtons: Array("prevMeldungButton", "currentMeldungButton", "nextMeldungButton"),
@@ -185,7 +185,7 @@ KsMobil.MeldungController = M.Controller.extend({
      */
     backToMap: function() {
         KsMobil.MapController.unselect();
-        this.switchToPage(this.mapPage);
+        this.switchToPage(this.mapPage, 'slidedown', true, false);
     },
 
     /**
@@ -194,7 +194,7 @@ KsMobil.MeldungController = M.Controller.extend({
     unterstuetzen: function() {
         var toolbar = M.ViewManager.getView('meldungPage', 'toolbar');
         if (!$('#' + toolbar.buttons.id).find('.ui-btn').hasClass('disabled')) {
-            this.switchToPage(this.unterstuetzenPage);
+            this.switchToPage(this.unterstuetzenPage, 'slidedown', true, false);
         }
     },
 
@@ -204,7 +204,7 @@ KsMobil.MeldungController = M.Controller.extend({
     missbrauchMelden: function() {
         var toolbar = M.ViewManager.getView('meldungPage', 'toolbar');
         if (!$('#' + toolbar.buttons.id).find('.ui-btn').hasClass('disabled')) {
-            this.switchToPage(this.missbrauchPage);
+            this.switchToPage(this.missbrauchPage, 'slidedown', true, false);
         }
     },
 
@@ -214,7 +214,7 @@ KsMobil.MeldungController = M.Controller.extend({
     lobenHinweisenKritisieren: function() {
         var toolbar = M.ViewManager.getView('meldungPage', 'toolbar');
         if (!$('#' + toolbar.buttons.id).find('.ui-btn').hasClass('disabled')) {
-            this.switchToPage(this.lobenHinweisenKritisierenPage);
+            this.switchToPage(this.lobenHinweisenKritisierenPage, 'slidedown', true, false);
         }
     },
 
@@ -222,7 +222,7 @@ KsMobil.MeldungController = M.Controller.extend({
      * Switches (back) to MeldungPage.
      */
     backToMeldung: function() {
-        this.switchToPage(this.meldungPage);
+        this.switchToPage(this.meldungPage, 'slidedown', true, false);
     },
 
     /**
@@ -663,7 +663,7 @@ KsMobil.MeldungController = M.Controller.extend({
      * Switches to meldenPage after marker has been moved around.
      */
     weiter2: function() {
-        this.switchToPage(this.meldenPage);
+        this.switchToPage(this.meldenPage, 'slidedown', true, false);
     },
 
     /**

@@ -146,7 +146,7 @@ KsMobil.AppController = M.Controller.extend({
      * Switch to map view.
      */
     go: function() {
-        this.switchToPage(M.ViewManager.getPage('mapPage'));
+        this.switchToPage(M.ViewManager.getPage('mapPage'), 'slidedown', true, false);
     },
 
     /**

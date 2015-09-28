@@ -58,7 +58,7 @@ KsMobil.SuchController = M.Controller.extend({
         var bbox = this.searchResults.array[pos].bbox;
 
         KsMobil.MapController.zoomTo(bbox, 18);
-        this.switchToPage(M.ViewManager.getPage('mapPage'));
+        this.switchToPage(M.ViewManager.getPage('mapPage'), 'slidedown', true, false);
     }
 });
 
