@@ -471,7 +471,7 @@ KsMobil.MapController = M.Controller.extend({
     },
 
     search: function() {
-        this.switchToPage(M.ViewManager.getPage('suchenPage'));
+        this.switchToPage(M.ViewManager.getPage('suchenPage'), 'slidedown', true, false);
     },
 
     zoomTo: function(bbox, max) {
