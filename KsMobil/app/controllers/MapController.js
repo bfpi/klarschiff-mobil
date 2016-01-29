@@ -179,29 +179,23 @@ KsMobil.MapController = M.Controller.extend({
                         singleTile: true
                     }
                 ),
-                stadtplan: new OpenLayers.Layer.TMS('Stadtplan', 'http://geo.sv.rostock.de/geodienste/stadtplan/tms/', {
-                    layername: 'stadtplan_EPSG25833',
-                    type: 'png',
-                    transitionEffect: 'resize',
-                    tileSize: new OpenLayers.Size(256, 256),
-                    serverResolutions: [529.166666667,
-                        352.777777778, 264.583333333, 176.388888889, 88.1944444444,
-                        52.9166666667, 35.2777777778, 28.2222222222, 22.9305555556,
-                        17.6388888889, 12.3472222222, 8.8194444444, 7.0555555556,
-                        5.2916666667, 3.5277777778, 2.6458333333, 1.7638888889,
-                        0.8819444444, 0.3527777778, 0.1763888889]
+                stadtplan: new OpenLayers.Layer.WMTS({
+                    name: 'Stadtplan',
+                    url: 'http://www.orka-mv.de/geodienste/orkamv/wmts/orkamv/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
+                    layer: 'orkamv',
+                    matrixSet: 'epsg_25833_adv',
+                    format: 'png',
+                    style: 'default',
+                    requestEncoding: 'REST'
                 }),
-                luftbild: new OpenLayers.Layer.TMS('Luftbild', 'http://geo.sv.rostock.de/geodienste/luftbild/tms/', {
-                    layername: 'luftbild_EPSG25833',
-                    type: 'png',
-                    transitionEffect: 'resize',
-                    tileSize: new OpenLayers.Size(256, 256),
-                    serverResolutions: [529.166666667,
-                        352.777777778, 264.583333333, 176.388888889, 88.1944444444,
-                        52.9166666667, 35.2777777778, 28.2222222222, 22.9305555556,
-                        17.6388888889, 12.3472222222, 8.8194444444, 7.0555555556,
-                        5.2916666667, 3.5277777778, 2.6458333333, 1.7638888889,
-                        0.8819444444, 0.3527777778, 0.1763888889]
+                luftbild: new OpenLayers.Layer.WMTS({
+                    name: 'Luftbild',
+                    url: 'http://geo.sv.rostock.de/geodienste/luftbild_mv-40/wmts/hro.luftbild_mv-40.luftbild_mv-40/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
+                    layer: 'orkamv',
+                    matrixSet: 'epsg_25833_adv',
+                    format: 'png',
+                    style: 'default',
+                    requestEncoding: 'REST'
                 })
             };
 
@@ -237,18 +231,14 @@ KsMobil.MapController = M.Controller.extend({
                 attribution: new OpenLayers.Control.Attribution()
             };
 
-            this.map = this.view.initMap(
-                {
+            this.map = this.view.initMap({
                 projection: new OpenLayers.Projection('EPSG:25833'),
-                maxResolution: 22.9305555556,
-                resolutions: [22.9305555556,
-                    17.6388888889, 12.3472222222, 8.8194444444, 7.0555555556,
-                    5.2916666667, 3.5277777778, 2.6458333333, 1.7638888889,
-                    0.8819444444, 0.3527777778, 0.1763888889],
-                    units: 'm',
-                    numZoomLevels: 12,
-                    maxExtent: new OpenLayers.Bounds(200000, 5880000, 480000, 6075000),
-                    restrictedExtent: new OpenLayers.Bounds(302094.673, 5991073.68, 325566.696, 6016342.598)
+                maxResolution: 19.1092570713,
+                resolutions: [4891.96981025, 2445.98490513, 1222.99245256, 611.496226281, 305.748113141, 152.87405657, 76.4370282852, 38.2185141426, 19.1092570713, 9.5546285356, 4.7773142678, 2.3886571339, 1.194328567, 0.5971642835, 0.2985821417],
+                units: 'm',
+                numZoomLevels: 15,
+                maxExtent: new OpenLayers.Bounds(-464849.38, 5057815.86858, 787494.891424, 6310160.14),
+                restrictedExtent: new OpenLayers.Bounds(302094.673, 5991073.68, 325566.696, 6016342.598)
             },
             this.layers,
             {
