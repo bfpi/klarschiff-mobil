@@ -191,7 +191,7 @@ KsMobil.MapController = M.Controller.extend({
                 luftbild: new OpenLayers.Layer.WMTS({
                     name: 'Luftbild',
                     url: 'http://geo.sv.rostock.de/geodienste/luftbild_mv-40/wmts/hro.luftbild_mv-40.luftbild_mv-40/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
-                    layer: 'orkamv',
+                    layer: 'hro.luftbild_mv-40.luftbild_mv-40',
                     matrixSet: 'epsg_25833_adv',
                     format: 'png',
                     style: 'default',
