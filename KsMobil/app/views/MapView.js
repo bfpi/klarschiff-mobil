@@ -45,12 +45,6 @@ KsMobil.OpenlayersMapView = M.View.extend({
             return;
         }
         var next = this.nextBaselayer();
-        if(next.name == "Luftbild") {
-            this.map.getLayersByName("Klarschiff-POI")[0].setVisibility(false);
-        };
-        if(next.name == "Stadtplan") {
-            this.map.getLayersByName("Klarschiff-POI")[0].setVisibility(true);
-        };
         this.map.setBaseLayer(next);
         return next;
     },

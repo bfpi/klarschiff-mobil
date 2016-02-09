@@ -166,42 +166,29 @@ KsMobil.MapController = M.Controller.extend({
                     ],
                     styleMap: this.styles.meldungen
                 }),
-                poi: new OpenLayers.Layer.WMS('Klarschiff-POI', 'http://geo.sv.rostock.de/geodienste/klarschiff-poi/wms', {
-                        layers: 'hro.klarschiff-poi.abfallbehaelter,hro.klarschiff-poi.ampeln,hro.klarschiff-poi.beleuchtung,hro.klarschiff-poi.brunnen,hro.klarschiff-poi.denkmale,hro.klarschiff-poi.hundetoiletten,hro.klarschiff-poi.recyclingcontainer,hro.klarschiff-poi.sitzgelegenheiten,hro.klarschiff-poi.sperrmuelltermine',
-                        format: 'image/png',
-                        transparent: true,
-                    },
-                    {
-                        transitionEffect: 'resize',
-                        displayInLayerSwitcher: false,
-                        isBaseLayer: false,
-                        minScale: 1100,
-                        singleTile: true
-                    }
-                ),
                 stadtplan: new OpenLayers.Layer.WMTS({
                     name: 'Stadtplan',
-                    url: 'http://www.orka-mv.de/geodienste/orkamv/wmts/orkamv/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
+                    url: 'http://www.geodaten-mv.de/dienste/orka_wmts/wmts/orkamv/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
                     layer: 'orkamv',
-                    matrixSet: 'epsg_25833',
-                    format: 'png',
+                    format: 'image/png',
+                    matrixSet: 'epsg_25833_adv',
+                    matrixIds: ['7', '8', '9', '10', '11', '12', '13'],
                     style: 'default',
-                    requestEncoding: 'REST',
-                    serverResolutions: [4891.96981025128,3459.1450261886484,2445.9849051256397,1729.5725130942737,1222.9924525628198,864.7862565471368,611.4962262814098,432.3931282735683,305.7481131407049,216.19656413678416,152.8740565703524,108.09828206839207,76.43702828517618,54.049141034196026,38.21851414258809,27.024570517098006,19.109257071294042,13.512285258549001,9.55462853564702,6.7561426292745,4.77731426782351,3.3780713146372494,2.3886571339117544,1.6890356573186245,1.1943285669558772,0.8445178286593122,0.5971642834779384,0.422258914329656,0.29858214173896913,0.21112945716482798,0.14929107086948457,0.10556472858241398,0.07464553543474227,0.05278236429120697,0.03732276771737113]
+                    requestEncoding: 'REST'
                 }),
                 luftbild: new OpenLayers.Layer.WMTS({
                     name: 'Luftbild',
-                    url: 'http://geo.sv.rostock.de/geodienste/luftbild_mv-40/wmts/hro.luftbild_mv-40.luftbild_mv-40/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
-                    layer: 'hro.luftbild_mv-40.luftbild_mv-40',
-                    matrixSet: 'epsg_25833',
-                    format: 'png',
+                    url: 'http://www.geodaten-mv.de/dienste/dop_wmts/wmts/mv_dop/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
+                    layer: 'mv_dop',
+                    matrixSet: 'ETRS89UTM33',
+                    matrixIds: ['7', '8', '9', '10', '11', '12', '13'],
+                    format: 'image/png',
                     style: 'default',
-                    requestEncoding: 'REST',
-                    serverResolutions: [4891.96981025128,3459.1450261886484,2445.9849051256397,1729.5725130942737,1222.9924525628198,864.7862565471368,611.4962262814098,432.3931282735683,305.7481131407049,216.19656413678416,152.8740565703524,108.09828206839207,76.43702828517618,54.049141034196026,38.21851414258809,27.024570517098006,19.109257071294042,13.512285258549001,9.55462853564702,6.7561426292745,4.77731426782351,3.3780713146372494,2.3886571339117544,1.6890356573186245,1.1943285669558772,0.8445178286593122,0.5971642834779384,0.422258914329656,0.29858214173896913,0.21112945716482798,0.14929107086948457,0.10556472858241398,0.07464553543474227,0.05278236429120697,0.03732276771737113]
+                    requestEncoding: 'REST'
                 })
             };
 
-            this.layers.stadtplan.attribution = 'Kartenbild © Hansestadt Rostock (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
+            this.layers.stadtplan.attribution = 'Kartenbild © Landeshauptstadt Schwerin (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
             this.layers.luftbild.attribution = '© GeoBasis-DE/M-V';
 
             this.controls = {
@@ -235,10 +222,10 @@ KsMobil.MapController = M.Controller.extend({
 
             this.map = this.view.initMap({
                 projection: new OpenLayers.Projection('EPSG:25833'),
-                resolutions: [27.024570517098006,19.109257071294042,13.512285258549001,9.55462853564702,6.7561426292745,4.77731426782351,3.3780713146372494,2.3886571339117544,1.6890356573186245,1.1943285669558772,0.8445178286593122,0.5971642834779384,0.422258914329656,0.29858214173896913,0.21112945716482798,0.14929107086948457],
+                resolutions: [38.2185141426, 19.1092570713, 9.5546285356, 4.7773142678, 2.3886571339, 1.194328567, 0.5971642835],
                 units: 'm',
                 maxExtent: new OpenLayers.Bounds(-464849.38, 5057815.86858, 787494.891424, 6310160.14),
-                restrictedExtent: new OpenLayers.Bounds(302094.673, 5991073.68, 325566.696, 6016342.598)
+                restrictedExtent: new OpenLayers.Bounds(232000, 5923000, 295000, 5974300)
             },
             this.layers,
             {
