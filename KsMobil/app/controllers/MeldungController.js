@@ -65,6 +65,9 @@ KsMobil.MeldungController = M.Controller.extend({
         this.hauptkategorienCache = {};
         this.unterkategorienCache = {};
         $.each(KsMobil.configuration.kategorie, function(idx, kategorie) {
+            if (kategorie.geloescht == 't') {
+                return true;
+            }
             if (!kategorie.parent) {
                 if (typeof self.hauptkategorienCache[kategorie.vorgangstyp] === 'undefined') {
                     self.hauptkategorienCache[kategorie.vorgangstyp] = [];
