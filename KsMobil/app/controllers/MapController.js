@@ -166,19 +166,6 @@ KsMobil.MapController = M.Controller.extend({
                     ],
                     styleMap: this.styles.meldungen
                 }),
-                poi: new OpenLayers.Layer.WMS('Klarschiff-POI', 'http://geo.sv.rostock.de/geodienste/klarschiff-poi/wms', {
-                        layers: 'hro.klarschiff-poi.abfallbehaelter,hro.klarschiff-poi.ampeln,hro.klarschiff-poi.beleuchtung,hro.klarschiff-poi.brunnen,hro.klarschiff-poi.denkmale,hro.klarschiff-poi.hundetoiletten,hro.klarschiff-poi.recyclingcontainer,hro.klarschiff-poi.sitzgelegenheiten,hro.klarschiff-poi.sperrmuelltermine',
-                        format: 'image/png',
-                        transparent: true,
-                    },
-                    {
-                        transitionEffect: 'resize',
-                        displayInLayerSwitcher: false,
-                        isBaseLayer: false,
-                        minScale: 1100,
-                        singleTile: true
-                    }
-                ),
                 stadtplan: new OpenLayers.Layer.WMTS({
                     name: 'Stadtplan',
                     url: 'http://www.orka-mv.de/geodienste/orkamv/wmts/orkamv/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
@@ -201,7 +188,7 @@ KsMobil.MapController = M.Controller.extend({
                 })
             };
 
-            this.layers.stadtplan.attribution = 'Kartenbild © Hansestadt Rostock (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
+            this.layers.stadtplan.attribution = 'Kartenbild © Universitäts- und Hansestadt Greifswald (<a href="http://creativecommons.org/licenses/by/3.0/deed.de" target="_blank" style="color:#006CB7;text-decoration:none;">CC BY 3.0</a>)<br/>Kartendaten © <a href="http://www.openstreetmap.org/" target="_blank" style="color:#006CB7;text-decoration:none;">OpenStreetMap</a> (<a href="http://opendatacommons.org/licenses/odbl/" target="_blank" style="color:#006CB7;text-decoration:none;">ODbL</a>) und <a href="https://geo.sv.rostock.de/uvgb.html" target="_blank" style="color:#006CB7;text-decoration:none;">uVGB-MV</a>';
             this.layers.luftbild.attribution = '© GeoBasis-DE/M-V';
 
             this.controls = {
@@ -238,7 +225,7 @@ KsMobil.MapController = M.Controller.extend({
                 resolutions: [27.024570517098006,19.109257071294042,13.512285258549001,9.55462853564702,6.7561426292745,4.77731426782351,3.3780713146372494,2.3886571339117544,1.6890356573186245,1.1943285669558772,0.8445178286593122,0.5971642834779384,0.422258914329656,0.29858214173896913,0.21112945716482798,0.14929107086948457],
                 units: 'm',
                 maxExtent: new OpenLayers.Bounds(-464849.38, 5057815.86858, 787494.891424, 6310160.14),
-                restrictedExtent: new OpenLayers.Bounds(302094.673, 5991073.68, 325566.696, 6016342.598)
+                restrictedExtent: new OpenLayers.Bounds(389869, 5990667, 401158, 5998481)
             },
             this.layers,
             {

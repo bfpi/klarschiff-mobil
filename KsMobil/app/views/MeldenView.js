@@ -60,7 +60,7 @@ KsMobil.MeldenView = M.ScrollView.design({
     }),
 
     foto: M.View.design({
-        html: '<label class="ui-input-text">Foto <span style="font-style:italic;color:#d81920">(Dateigröße maximal 2 MB!)</label>'
+        html: '<label class="ui-input-text">Foto <span style="font-style:italic;color:#d81920">(Dateigröße maximal 4 MB!)</label>'
             + '<form>'
             + '<input name="foto" type="file" accept="image/png,image/jpeg" />'
             + '</form>'
