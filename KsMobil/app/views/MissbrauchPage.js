@@ -26,7 +26,7 @@ KsMobil.MissbrauchPage = M.PageView.design({
     }),
 
     content: M.ScrollView.design({
-        childViews: 'email begruendung hinweis actions',
+        childViews: 'email begruendung datenschutz_title datenschutz hinweis actions',
 
         email: M.TextFieldView.design({
             inputType: M.INPUT_EMAIL,
@@ -42,6 +42,16 @@ KsMobil.MissbrauchPage = M.PageView.design({
             cssClassOnInit: 'initial-text'
         }),
         
+        datenschutz_title: M.View.design({
+            html: '<h4>Hinweis zum Datenschutz (bitte akzeptieren)</h4>'
+        }),
+        datenschutz: M.ToggleSwitchView.design({
+            label: 'Ich willige hiermit in die <a href="https://www.greifswald.de/export/sites/hgw/de/datenschutzerklaerung/Datenschutzinformationen/3010_Datenschutzinformation-Klarschiff-HGW.pdf" target="_blank">Datenschutzerklärung</a> zur Nutzung des Angebotes „Klarschiff-HGW“ der Universitäts- und Hansestadt Greifswald ein und stimme der Verarbeitung der von mir freiwillig gemachten personengebundenen Angaben zu.',
+            onLabel: 'akzeptiert',
+            offLabel: 'nicht akzeptiert',
+            cssClass: 'datenschutz'
+        }),
+
         hinweis: M.LabelView.design({
             value: '<b>Hinweis:</b> Einen Missbrauch können und sollten Sie dann melden, wenn durch Beschreibung oder Foto Persönlichkeitsrechte verletzt werden (z. B. wenn auf dem Foto Gesichter oder Kfz-Kennzeichen zu erkennen sind). <span style="font-style:italic;color:#d81920">Achtung: Wenn Sie einen Missbrauch melden, wird die betroffene Meldung <b>sofort</b> und so lange <b>deaktiviert</b> (und damit unsichtbar), bis wir Ihren Missbrauchshinweis bearbeitet haben.</span>',
             cssClass: "hinweis"

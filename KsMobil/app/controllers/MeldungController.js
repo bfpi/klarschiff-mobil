@@ -313,8 +313,17 @@ KsMobil.MeldungController = M.Controller.extend({
             unterkategorie: form.unterkategorie.getSelection(),
             point: this.feature.geometry.toShortString(),
             email: form.email.value,
-            beschreibung: form.beschreibung.value
+            beschreibung: form.beschreibung.value,
+            datenschutz: form.datenschutz.getValue()
         };
+
+        if (data.datenschutz !== 'true') {
+            M.DialogView.alert({
+                title: 'Fehler',
+                message: 'Sie müssen die Datenschutzerklärung akzeptieren.'
+            });
+            return false;
+        }
 
         if (typeof data.hauptkategorie === 'undefined') {
             M.DialogView.alert({
@@ -411,11 +420,16 @@ KsMobil.MeldungController = M.Controller.extend({
 
         var data = {
             id: this.feature.attributes.id,
-            email: M.ViewManager.getView('unterstuetzenPage', 'email').value
+            email: M.ViewManager.getView('unterstuetzenPage', 'email').value,
+            datenschutz: M.ViewManager.getView('unterstuetzenPage', 'datenschutz').getValue()
         };
 
+        if (data.datenschutz !== 'true') {
+            errors.push('Sie müssen die Datenschutzerklärung akzeptieren.');
+        }
+
         if (!M.EmailValidator.pattern.exec(data.email)) {
-            errors.push('<p>Sie müssen Ihre E-Mail-Adresse angeben.');
+            errors.push('Sie müssen Ihre E-Mail-Adresse angeben.');
         }
 
         if (errors.length) {
@@ -476,15 +490,19 @@ KsMobil.MeldungController = M.Controller.extend({
         var data = {
             id: this.feature.attributes.id,
             email: M.ViewManager.getView('missbrauchPage', 'email').value,
-            begruendung: M.ViewManager.getView('missbrauchPage', 'begruendung').value
+            begruendung: M.ViewManager.getView('missbrauchPage', 'begruendung').value,
+            datenschutz: M.ViewManager.getView('missbrauchPage', 'datenschutz').getValue()
         };
 
+        if (data.datenschutz !== 'true') {
+            errors.push('Sie müssen die Datenschutzerklärung akzeptieren.');
+        }
         if (!M.EmailValidator.pattern.exec(data.email)) {
-            errors.push('<p>Sie müssen Ihre E-Mail-Adresse angeben.');
+            errors.push('Sie müssen Ihre E-Mail-Adresse angeben.');
         }
 
         if (!data.begruendung) {
-            errors.push('<p>Sie müssen eine Begründung angeben.')
+            errors.push('Sie müssen eine Begründung angeben.')
         }
 
         if (errors.length) {
@@ -545,15 +563,20 @@ KsMobil.MeldungController = M.Controller.extend({
         var data = {
             id: this.feature.attributes.id,
             email: M.ViewManager.getView('lobenHinweisenKritisierenPage', 'email').value,
-            freitext: M.ViewManager.getView('lobenHinweisenKritisierenPage', 'freitext').value
+            freitext: M.ViewManager.getView('lobenHinweisenKritisierenPage', 'freitext').value,
+            datenschutz: M.ViewManager.getView('lobenHinweisenKritisierenPage', 'datenschutz').getValue()
         };
 
+        if (data.datenschutz !== 'true') {
+            errors.push('Sie müssen die Datenschutzerklärung akzeptieren.');
+        }
+
         if (!M.EmailValidator.pattern.exec(data.email)) {
-            errors.push('<p>Sie müssen Ihre E-Mail-Adresse angeben.');
+            errors.push('Sie müssen Ihre E-Mail-Adresse angeben.');
         }
 
         if (!data.freitext) {
-            errors.push('<p>Sie müssen Ihr Lob, Ihre Hinweise oder Ihre Kritik zur Meldung angeben.')
+            errors.push('Sie müssen Ihr Lob, Ihre Hinweise oder Ihre Kritik zur Meldung angeben.')
         }
 
         if (errors.length) {

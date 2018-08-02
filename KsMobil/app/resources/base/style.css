@@ -313,3 +313,7 @@ a#impressum:hover {
   margin-left: 0;
   margin-right: 0;
 }
+
+.datenschutz .ui-slider {
+  width: 11em;
+}

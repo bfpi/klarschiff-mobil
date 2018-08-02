@@ -26,7 +26,7 @@ KsMobil.LobenHinweisenKritisierenPage = M.PageView.design({
     }),
 
     content: M.ScrollView.design({
-        childViews: 'email freitext actions',
+        childViews: 'email freitext datenschutz_title datenschutz actions',
 
         email: M.TextFieldView.design({
             inputType: M.INPUT_EMAIL,
@@ -40,6 +40,16 @@ KsMobil.LobenHinweisenKritisierenPage = M.PageView.design({
             hasMultipleLines: true,
             initialText: 'Bitte tragen Sie hier Ihr Lob, Ihre Hinweise oder Ihre Kritik zur Meldung ein.',
             cssClassOnInit: 'initial-text'
+        }),
+
+        datenschutz_title: M.View.design({
+            html: '<h4>Hinweis zum Datenschutz (bitte akzeptieren)</h4>'
+        }),
+        datenschutz: M.ToggleSwitchView.design({
+            label: 'Ich willige hiermit in die <a href="https://www.greifswald.de/export/sites/hgw/de/datenschutzerklaerung/Datenschutzinformationen/3010_Datenschutzinformation-Klarschiff-HGW.pdf" target="_blank">Datenschutzerklärung</a> zur Nutzung des Angebotes „Klarschiff-HGW“ der Universitäts- und Hansestadt Greifswald ein und stimme der Verarbeitung der von mir freiwillig gemachten personengebundenen Angaben zu.',
+            onLabel: 'akzeptiert',
+            offLabel: 'nicht akzeptiert',
+            cssClass: 'datenschutz'
         }),
 
         actions: M.ButtonGroupView.design({
