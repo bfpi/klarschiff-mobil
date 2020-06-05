@@ -1,7 +1,7 @@
 {
     "name": "KsMobil",
     "displayName" : "Klarschiff – Bürgerbeteiligung",
-    "buildVersion": "0.4",
+    "buildVersion": "0.5",
     "mode": "debug",
     "debugLevel": 1,
     "eliminate": false,
@@ -10,7 +10,7 @@
     "application": {
         "displayName": "Klarschiff – Bürgerbeteiligung",
         "baseUrl": null,
-        "version": "0.4",
+        "version": "0.5",
         "debugMode": true,
         "useTransitions": true,
         "enableTouchOverflow": true,
